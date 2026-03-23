@@ -1,0 +1,15 @@
+/home/kseniyastegantseva/ASOIU/seminar1/seminar1/bin/Debug/net8.0/seminar1
+/home/kseniyastegantseva/ASOIU/seminar1/seminar1/bin/Debug/net8.0/seminar1.deps.json
+/home/kseniyastegantseva/ASOIU/seminar1/seminar1/bin/Debug/net8.0/seminar1.runtimeconfig.json
+/home/kseniyastegantseva/ASOIU/seminar1/seminar1/bin/Debug/net8.0/seminar1.dll
+/home/kseniyastegantseva/ASOIU/seminar1/seminar1/bin/Debug/net8.0/seminar1.pdb
+/home/kseniyastegantseva/ASOIU/seminar1/seminar1/obj/Debug/net8.0/seminar1.GeneratedMSBuildEditorConfig.editorconfig
+/home/kseniyastegantseva/ASOIU/seminar1/seminar1/obj/Debug/net8.0/seminar1.AssemblyInfoInputs.cache
+/home/kseniyastegantseva/ASOIU/seminar1/seminar1/obj/Debug/net8.0/seminar1.AssemblyInfo.cs
+/home/kseniyastegantseva/ASOIU/seminar1/seminar1/obj/Debug/net8.0/seminar1.csproj.CoreCompileInputs.cache
+/home/kseniyastegantseva/ASOIU/seminar1/seminar1/obj/Debug/net8.0/seminar1.sourcelink.json
+/home/kseniyastegantseva/ASOIU/seminar1/seminar1/obj/Debug/net8.0/seminar1.dll
+/home/kseniyastegantseva/ASOIU/seminar1/seminar1/obj/Debug/net8.0/refint/seminar1.dll
+/home/kseniyastegantseva/ASOIU/seminar1/seminar1/obj/Debug/net8.0/seminar1.pdb
+/home/kseniyastegantseva/ASOIU/seminar1/seminar1/obj/Debug/net8.0/seminar1.genruntimeconfig.cache
+/home/kseniyastegantseva/ASOIU/seminar1/seminar1/obj/Debug/net8.0/ref/seminar1.dll
