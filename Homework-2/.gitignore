@@ -1,0 +1,6 @@
+bin/
+obj/
+*.db
+results/
+.DS_Store
+.vscode/
