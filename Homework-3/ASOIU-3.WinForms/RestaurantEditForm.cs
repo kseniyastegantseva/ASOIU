@@ -1,5 +1,7 @@
 namespace ASOIU_3.WinForms;
 
+// Диалог наследуется от Form и отвечает только за ввод данных ресторана.
+// Сохранение в БД выполняется сервисом уже после закрытия формы.
 internal sealed class RestaurantEditForm : Form
 {
     private readonly TextBox _nameTextBox = new() { Dock = DockStyle.Fill };
@@ -56,6 +58,8 @@ internal sealed class RestaurantEditForm : Form
             Text = "Сохранить",
             AutoSize = true,
         };
+        // Лямбда является обработчиком события Click. Она замыкает текущий объект формы:
+        // через this, RestaurantName и DialogResult получает доступ к её состоянию.
         saveButton.Click += (_, _) =>
         {
             if (string.IsNullOrWhiteSpace(RestaurantName))

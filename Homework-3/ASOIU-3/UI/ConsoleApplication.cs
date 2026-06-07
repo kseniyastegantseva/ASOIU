@@ -3,6 +3,8 @@ using ASOIU_3.Services;
 
 namespace ASOIU_3.UI;
 
+// Этот класс отвечает только за консольное отображение и ввод пользователя.
+// Доступ к EF Core делегирован сервисам, поэтому UI не содержит запросов к базе.
 internal sealed class ConsoleApplication
 {
     private static readonly CultureInfo RussianCulture =
@@ -33,6 +35,8 @@ internal sealed class ConsoleApplication
                     Console.WriteLine("Работа завершена.");
                     return;
                 case "1":
+                    // RestaurantMenu передаётся как делегат Action, а не вызывается здесь напрямую.
+                    // Это позволяет RunSafely единообразно оборачивать разные операции в обработку ошибок.
                     RunSafely(RestaurantMenu);
                     break;
                 case "2":
@@ -124,11 +128,14 @@ internal sealed class ConsoleApplication
 
     private void ShowRestaurants()
     {
+        // Страница списка получает уже подготовленные данные из сервиса.
         var restaurants = _restaurantService.GetAll();
         Console.WriteLine();
         Console.WriteLine("Справочник ресторанов");
         ConsoleTable.Print(
             ["ID", "Название", "Блюд"],
+            // Select — LINQ-проекция: каждый объект списка преобразуется
+            // в обобщённую коллекцию строк для универсального ConsoleTable.
             restaurants.Select(restaurant => (IReadOnlyList<string>)
             [
                 restaurant.Id.ToString(CultureInfo.InvariantCulture),
@@ -189,6 +196,8 @@ internal sealed class ConsoleApplication
         Console.WriteLine("Список блюд");
         ConsoleTable.Print(
             ["ID", "Блюдо", "Ресторан", "Цена, руб."],
+            // Лямбда menuItem => ... описывает способ отображения одного блюда,
+            // не изменяя сам объект, полученный из сервиса.
             menuItems.Select(menuItem => (IReadOnlyList<string>)
             [
                 menuItem.Id.ToString(CultureInfo.InvariantCulture),
@@ -262,6 +271,7 @@ internal sealed class ConsoleApplication
 
     private void ShowReport()
     {
+        // UI получает модель отчёта из ReportService и только выводит её разделы.
         var report = _reportService.Generate();
 
         Console.WriteLine();
@@ -311,6 +321,7 @@ internal sealed class ConsoleApplication
         Console.WriteLine("Доступные рестораны:");
         foreach (var restaurant in restaurants)
         {
+            // foreach последовательно отображает элементы типизированной коллекции.
             Console.WriteLine($"{restaurant.Id}. {restaurant.Name}");
         }
 
@@ -331,6 +342,8 @@ internal sealed class ConsoleApplication
         }
 
         if (!int.TryParse(input, out var parsedRestaurantId)
+            // All — LINQ-проверка: условие должно быть истинно для каждого элемента.
+            // parsedRestaurantId захватывается лямбдой из внешней области — это замыкание.
             || restaurants.All(restaurant => restaurant.Id != parsedRestaurantId))
         {
             WriteError("Введите ID ресторана из списка.");
@@ -430,6 +443,8 @@ internal sealed class ConsoleApplication
         Console.WriteLine($"Ошибка: {message}");
     }
 
+    // Action — стандартный делегат для методов без параметров и возвращаемого значения.
+    // Благодаря полиморфному вызову action() сюда можно передать любую подходящую операцию меню.
     private static void RunSafely(Action action)
     {
         try

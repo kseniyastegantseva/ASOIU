@@ -2,6 +2,8 @@ using ASOIU_3.Services;
 
 namespace ASOIU_3.WinForms;
 
+// Эта форма играет роль представления/модели формы редактирования:
+// показывает поля блюда и возвращает введённые значения вызывающему MainForm.
 internal sealed class MenuItemEditForm : Form
 {
     private readonly TextBox _nameTextBox = new() { Dock = DockStyle.Fill };
@@ -21,6 +23,8 @@ internal sealed class MenuItemEditForm : Form
     };
 
     public MenuItemEditForm(
+        // IReadOnlyList<RestaurantChoice> — обобщённая коллекция вариантов
+        // для выпадающего списка; Entity-рестораны форме передавать не требуется.
         IReadOnlyList<RestaurantChoice> restaurants,
         string name = "",
         double price = 0,
@@ -35,6 +39,7 @@ internal sealed class MenuItemEditForm : Form
 
         _nameTextBox.Text = name;
         _priceInput.Value = Convert.ToDecimal(price);
+        // ToList создаёт список, который WinForms может использовать как DataSource.
         _restaurantComboBox.DataSource = restaurants.ToList();
         if (restaurantId.HasValue)
         {
@@ -100,6 +105,7 @@ internal sealed class MenuItemEditForm : Form
             Text = "Сохранить",
             AutoSize = true,
         };
+        // Обработчик события задан лямбдой; она использует состояние элементов текущей формы.
         saveButton.Click += (_, _) =>
         {
             if (string.IsNullOrWhiteSpace(MenuItemName))

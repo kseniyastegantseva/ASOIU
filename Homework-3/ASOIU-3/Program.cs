@@ -20,6 +20,8 @@ public static class Program
 
         try
         {
+            // Сначала общий инициализатор подготавливает SQLite,
+            // затем управление передаётся слою пользовательского интерфейса.
             DatabaseInitializer.Initialize();
             var application = new ConsoleApplication();
             application.Run();

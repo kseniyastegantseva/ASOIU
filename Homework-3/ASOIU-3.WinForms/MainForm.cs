@@ -4,6 +4,9 @@ using ASOIU_3.Services;
 
 namespace ASOIU_3.WinForms;
 
+// MainForm наследуется от Form — это пример наследования в ООП:
+// класс получает поведение окна и расширяет его интерфейсом приложения.
+// Форма отвечает за отображение, а CRUD и LINQ к БД выполняют сервисы.
 internal sealed class MainForm : Form
 {
     private readonly RestaurantService _restaurantService = new();
@@ -27,12 +30,16 @@ internal sealed class MainForm : Form
         tabs.TabPages.Add(CreateReportTab());
         Controls.Add(tabs);
 
+        // Событие Shown хранит делегат EventHandler. Лямбда с параметрами (_, _)
+        // игнорирует объект-источник и аргументы события и запускает обновление данных.
         Shown += (_, _) => Execute(RefreshAll);
     }
 
     private TabPage CreateRestaurantsTab()
     {
         var buttons = CreateButtonPanel(
+            // Каждая лямбда становится обработчиком Click. Метод LoadRestaurants
+            // передаётся дальше как делегат Action в Execute.
             ("Обновить", (_, _) => Execute(LoadRestaurants)),
             ("Добавить", (_, _) => Execute(AddRestaurant)),
             ("Изменить", (_, _) => Execute(EditRestaurant)),
@@ -86,6 +93,7 @@ internal sealed class MainForm : Form
             AutoSize = true,
             Anchor = AnchorStyles.Left,
         };
+        // Лямбда подписывает кнопку на событие и связывает UI с построением отчёта.
         refreshButton.Click += (_, _) => Execute(LoadReport);
         layout.Controls.Add(refreshButton, 0, 6);
         page.Controls.Add(layout);
@@ -101,6 +109,8 @@ internal sealed class MainForm : Form
 
     private void LoadRestaurants()
     {
+        // Select преобразует вспомогательные объекты сервиса в строки,
+        // подходящие для автоматической привязки DataGridView.
         _restaurantGrid.DataSource = new BindingList<RestaurantGridRow>(
             _restaurantService.GetAll()
                 .Select(item => new RestaurantGridRow(
@@ -108,6 +118,8 @@ internal sealed class MainForm : Form
                     item.Name,
                     item.MenuItemCount))
                 .ToList());
+        // BindingList<T> и List<T> — обобщённые коллекции с типом RestaurantGridRow.
+        // Благодаря T таблица получает известный набор свойств для колонок.
         ConfigureHeaders(
             _restaurantGrid,
             ("Id", "ID"),
@@ -119,6 +131,7 @@ internal sealed class MainForm : Form
     {
         _menuItemGrid.DataSource = new BindingList<MenuItemGridRow>(
             _menuItemService.GetAll()
+                // Лямбда задаёт проекцию одной строки сервиса в строку таблицы UI.
                 .Select(item => new MenuItemGridRow(
                     item.Id,
                     item.Name,
@@ -136,9 +149,11 @@ internal sealed class MainForm : Form
 
     private void LoadReport()
     {
+        // Форма получает готовую модель отчёта и не повторяет EF Core-запросы.
         var report = _reportService.Generate();
 
         _fullReportGrid.DataSource = report.FullList
+            // Select создаёт отдельные ViewModel-подобные record-объекты для DataGridView.
             .Select(row => new FullReportGridRow(
                 row.MenuItemName,
                 row.RestaurantName,
@@ -329,6 +344,9 @@ internal sealed class MainForm : Form
 
     private void Execute(Action action)
     {
+        // Action позволяет одному методу принимать разные операции обновления.
+        // Вызов делегата action() демонстрирует полиморфное поведение:
+        // конкретный исполняемый метод определяется переданным объектом делегата.
         try
         {
             action();
@@ -365,6 +383,8 @@ internal sealed class MainForm : Form
     }
 
     private static FlowLayoutPanel CreateButtonPanel(
+        // Массив кортежей объединяет подпись кнопки и делегат EventHandler.
+        // Это вспомогательное представление данных, не связанное с таблицами БД.
         params (string Text, EventHandler Handler)[] buttons)
     {
         var panel = new FlowLayoutPanel
@@ -378,6 +398,7 @@ internal sealed class MainForm : Form
         foreach (var (text, handler) in buttons)
         {
             var button = new Button { Text = text, AutoSize = true };
+            // Один и тот же код подписывает любую кнопку на переданный обработчик.
             button.Click += handler;
             panel.Controls.Add(button);
         }
@@ -434,6 +455,8 @@ internal sealed class MainForm : Form
         }
     }
 
+    // Обобщённый метод GetSelectedRow<T> работает с любым типом строки таблицы.
+    // Ограничение where T : class разрешает вернуть null при отсутствии выбора.
     private static T? GetSelectedRow<T>(DataGridView grid)
         where T : class
     {
@@ -450,6 +473,8 @@ internal sealed class MainForm : Form
             MessageBoxIcon.Warning);
     }
 
+    // Вложенные record-классы — вспомогательные типы отображения, а не Entity.
+    // Они задают форму данных конкретной таблицы и не сохраняются через EF Core.
     private sealed record RestaurantGridRow(int Id, string Name, int MenuItemCount);
 
     private sealed record MenuItemGridRow(

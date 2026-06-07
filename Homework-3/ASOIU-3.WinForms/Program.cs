@@ -8,7 +8,9 @@ internal static class Program
     private static void Main()
     {
         ApplicationConfiguration.Initialize();
+        // Обе версии интерфейса используют один и тот же инициализатор и слой данных.
         DatabaseInitializer.Initialize();
+        // Application.Run запускает цикл сообщений и показывает главное окно.
         Application.Run(new MainForm());
     }
 }
