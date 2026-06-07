@@ -29,7 +29,7 @@ SQLite.
 ## Запуск консольной версии
 
 ```bash
-cd ./ASOIU-3 && dotnet run
+cd ./Homework-3/ASOIU-3 && dotnet run
 ```
 
 ## Запуск WinForms-версии

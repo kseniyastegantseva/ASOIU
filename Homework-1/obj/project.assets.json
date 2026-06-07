@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/kseniyastegantseva/ASOIU/HW1/HW1.csproj",
+      "projectUniqueName": "/home/kseniyastegantseva/ASOIU/Homework-1/HW1.csproj",
       "projectName": "HW1",
-      "projectPath": "/home/kseniyastegantseva/ASOIU/HW1/HW1.csproj",
+      "projectPath": "/home/kseniyastegantseva/ASOIU/Homework-1/HW1.csproj",
       "packagesPath": "/home/kseniyastegantseva/.nuget/packages/",
-      "outputPath": "/home/kseniyastegantseva/ASOIU/HW1/obj/",
+      "outputPath": "/home/kseniyastegantseva/ASOIU/Homework-1/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/kseniyastegantseva/.nuget/NuGet/NuGet.Config"
