@@ -37,6 +37,7 @@ cd ./ASOIU-3 && dotnet run
 WinForms-приложение запускается только на Windows:
 
 ```bash
+cd C:\ASOIU\Homework-3
 dotnet run --project ASOIU-3.WinForms/ASOIU-3.WinForms.csproj
 ```
 
