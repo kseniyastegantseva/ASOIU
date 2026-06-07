@@ -1,14 +1,29 @@
-C:\Users\Ксения Стеганцева\Desktop\HW1\HW1\HW1\obj\Debug\net10.0\HW1.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\Ксения Стеганцева\Desktop\HW1\HW1\HW1\obj\Debug\net10.0\HW1.AssemblyInfoInputs.cache
-C:\Users\Ксения Стеганцева\Desktop\HW1\HW1\HW1\obj\Debug\net10.0\HW1.AssemblyInfo.cs
-C:\Users\Ксения Стеганцева\Desktop\HW1\HW1\HW1\obj\Debug\net10.0\HW1.csproj.CoreCompileInputs.cache
-C:\Users\Ксения Стеганцева\Desktop\HW1\HW1\HW1\bin\Debug\net10.0\HW1.exe
-C:\Users\Ксения Стеганцева\Desktop\HW1\HW1\HW1\bin\Debug\net10.0\HW1.deps.json
-C:\Users\Ксения Стеганцева\Desktop\HW1\HW1\HW1\bin\Debug\net10.0\HW1.runtimeconfig.json
-C:\Users\Ксения Стеганцева\Desktop\HW1\HW1\HW1\bin\Debug\net10.0\HW1.dll
-C:\Users\Ксения Стеганцева\Desktop\HW1\HW1\HW1\bin\Debug\net10.0\HW1.pdb
-C:\Users\Ксения Стеганцева\Desktop\HW1\HW1\HW1\obj\Debug\net10.0\HW1.dll
-C:\Users\Ксения Стеганцева\Desktop\HW1\HW1\HW1\obj\Debug\net10.0\refint\HW1.dll
-C:\Users\Ксения Стеганцева\Desktop\HW1\HW1\HW1\obj\Debug\net10.0\HW1.pdb
-C:\Users\Ксения Стеганцева\Desktop\HW1\HW1\HW1\obj\Debug\net10.0\HW1.genruntimeconfig.cache
-C:\Users\Ксения Стеганцева\Desktop\HW1\HW1\HW1\obj\Debug\net10.0\ref\HW1.dll
+C:/Users/Ксения Стеганцева/Desktop/HW1/HW1/HW1/obj/Debug/net10.0/HW1.GeneratedMSBuildEditorConfig.editorconfig
+C:/Users/Ксения Стеганцева/Desktop/HW1/HW1/HW1/obj/Debug/net10.0/HW1.AssemblyInfoInputs.cache
+C:/Users/Ксения Стеганцева/Desktop/HW1/HW1/HW1/obj/Debug/net10.0/HW1.AssemblyInfo.cs
+C:/Users/Ксения Стеганцева/Desktop/HW1/HW1/HW1/obj/Debug/net10.0/HW1.csproj.CoreCompileInputs.cache
+C:/Users/Ксения Стеганцева/Desktop/HW1/HW1/HW1/bin/Debug/net10.0/HW1.exe
+C:/Users/Ксения Стеганцева/Desktop/HW1/HW1/HW1/bin/Debug/net10.0/HW1.deps.json
+C:/Users/Ксения Стеганцева/Desktop/HW1/HW1/HW1/bin/Debug/net10.0/HW1.runtimeconfig.json
+C:/Users/Ксения Стеганцева/Desktop/HW1/HW1/HW1/bin/Debug/net10.0/HW1.dll
+C:/Users/Ксения Стеганцева/Desktop/HW1/HW1/HW1/bin/Debug/net10.0/HW1.pdb
+C:/Users/Ксения Стеганцева/Desktop/HW1/HW1/HW1/obj/Debug/net10.0/HW1.dll
+C:/Users/Ксения Стеганцева/Desktop/HW1/HW1/HW1/obj/Debug/net10.0/refint/HW1.dll
+C:/Users/Ксения Стеганцева/Desktop/HW1/HW1/HW1/obj/Debug/net10.0/HW1.pdb
+C:/Users/Ксения Стеганцева/Desktop/HW1/HW1/HW1/obj/Debug/net10.0/HW1.genruntimeconfig.cache
+C:/Users/Ксения Стеганцева/Desktop/HW1/HW1/HW1/obj/Debug/net10.0/ref/HW1.dll
+/home/kseniyastegantseva/ASOIU/Homework-1/bin/Debug/net10.0/HW1
+/home/kseniyastegantseva/ASOIU/Homework-1/bin/Debug/net10.0/HW1.deps.json
+/home/kseniyastegantseva/ASOIU/Homework-1/bin/Debug/net10.0/HW1.runtimeconfig.json
+/home/kseniyastegantseva/ASOIU/Homework-1/bin/Debug/net10.0/HW1.dll
+/home/kseniyastegantseva/ASOIU/Homework-1/bin/Debug/net10.0/HW1.pdb
+/home/kseniyastegantseva/ASOIU/Homework-1/obj/Debug/net10.0/HW1.GeneratedMSBuildEditorConfig.editorconfig
+/home/kseniyastegantseva/ASOIU/Homework-1/obj/Debug/net10.0/HW1.AssemblyInfoInputs.cache
+/home/kseniyastegantseva/ASOIU/Homework-1/obj/Debug/net10.0/HW1.AssemblyInfo.cs
+/home/kseniyastegantseva/ASOIU/Homework-1/obj/Debug/net10.0/HW1.csproj.CoreCompileInputs.cache
+/home/kseniyastegantseva/ASOIU/Homework-1/obj/Debug/net10.0/HW1.sourcelink.json
+/home/kseniyastegantseva/ASOIU/Homework-1/obj/Debug/net10.0/HW1.dll
+/home/kseniyastegantseva/ASOIU/Homework-1/obj/Debug/net10.0/refint/HW1.dll
+/home/kseniyastegantseva/ASOIU/Homework-1/obj/Debug/net10.0/HW1.pdb
+/home/kseniyastegantseva/ASOIU/Homework-1/obj/Debug/net10.0/HW1.genruntimeconfig.cache
+/home/kseniyastegantseva/ASOIU/Homework-1/obj/Debug/net10.0/ref/HW1.dll
