@@ -3,39 +3,29 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ASOIU_3.Data;
 
-/// <summary>
 /// Контекст Entity Framework Core для базы данных ресторанов.
-/// </summary>
 // AppDbContext наследуется от DbContext. Это пример наследования в ООП:
 // класс получает готовые механизмы подключения, запросов и сохранения EF Core.
 public sealed class AppDbContext : DbContext
 {
-    /// <summary>
     /// Инициализирует контекст с настройками подключения по умолчанию.
-    /// </summary>
     public AppDbContext()
     {
     }
 
-    /// <summary>
     /// Инициализирует контекст с переданными настройками.
-    /// </summary>
-    /// <param name="options">Настройки контекста базы данных.</param>
+    /// Параметр options содержит настройки контекста базы данных.
     public AppDbContext(DbContextOptions<AppDbContext> options)
         : base(options)
     {
     }
 
-    /// <summary>
     /// Получает набор ресторанов.
-    /// </summary>
     // DbSet<T> — обобщённый тип EF Core. Здесь T = Restaurant,
     // поэтому свойство представляет таблицу Restaurants и позволяет выполнять LINQ-запросы.
     public DbSet<Restaurant> Restaurants => Set<Restaurant>();
 
-    /// <summary>
     /// Получает набор блюд меню.
-    /// </summary>
     // Здесь T = MenuItem: DbSet<MenuItem> соответствует основной таблице MenuItems.
     public DbSet<MenuItem> MenuItems => Set<MenuItem>();
 

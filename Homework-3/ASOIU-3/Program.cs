@@ -4,15 +4,11 @@ using ASOIU_3.UI;
 
 namespace ASOIU_3;
 
-/// <summary>
 /// Точка входа приложения для работы с ресторанами и блюдами.
-/// </summary>
 public static class Program
 {
-    /// <summary>
     /// Создаёт базу данных, заполняет её начальными данными и запускает приложение.
-    /// </summary>
-    /// <returns>Код завершения приложения.</returns>
+    /// Возвращает код завершения приложения.
     public static int Main()
     {
         Console.InputEncoding = Encoding.UTF8;

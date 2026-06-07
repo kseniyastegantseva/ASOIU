@@ -2,16 +2,12 @@ using ASOIU_3.Models;
 
 namespace ASOIU_3.Data;
 
-/// <summary>
 /// Создаёт базу данных и добавляет демонстрационные данные.
-/// </summary>
 // Инициализатор отделяет подготовку базы от пользовательского интерфейса,
 // чтобы Console и WinForms запускались с одинаковой схемой и начальными данными.
 public static class DatabaseInitializer
 {
-    /// <summary>
     /// Создаёт базу данных при первом запуске и заполняет пустую базу.
-    /// </summary>
     public static void Initialize()
     {
         using var context = new AppDbContext();
