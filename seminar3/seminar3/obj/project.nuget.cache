@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "MktfXkFaeVTFJB4c13SDiqe4lL7+fHK7X5sOaZZduMmf1duRWjkuq9w4gHdgWPndqcxLg7WaWAETVn8e9S0rpQ==",
+  "dgSpecHash": "5OdJb6f2lTo=",
   "success": true,
   "projectFilePath": "/home/kseniyastegantseva/ASOIU/seminar3/seminar3/seminar3.csproj",
   "expectedPackageFiles": [
@@ -10,7 +10,10 @@
     "/home/kseniyastegantseva/.nuget/packages/sqlitepclraw.core/2.1.11/sqlitepclraw.core.2.1.11.nupkg.sha512",
     "/home/kseniyastegantseva/.nuget/packages/sqlitepclraw.lib.e_sqlite3/2.1.11/sqlitepclraw.lib.e_sqlite3.2.1.11.nupkg.sha512",
     "/home/kseniyastegantseva/.nuget/packages/sqlitepclraw.provider.e_sqlite3/2.1.11/sqlitepclraw.provider.e_sqlite3.2.1.11.nupkg.sha512",
-    "/home/kseniyastegantseva/.nuget/packages/system.memory/4.5.3/system.memory.4.5.3.nupkg.sha512"
+    "/home/kseniyastegantseva/.nuget/packages/system.memory/4.5.3/system.memory.4.5.3.nupkg.sha512",
+    "/home/kseniyastegantseva/.nuget/packages/microsoft.netcore.app.ref/8.0.27/microsoft.netcore.app.ref.8.0.27.nupkg.sha512",
+    "/home/kseniyastegantseva/.nuget/packages/microsoft.aspnetcore.app.ref/8.0.27/microsoft.aspnetcore.app.ref.8.0.27.nupkg.sha512",
+    "/home/kseniyastegantseva/.nuget/packages/microsoft.netcore.app.host.linux-x64/8.0.27/microsoft.netcore.app.host.linux-x64.8.0.27.nupkg.sha512"
   ],
   "logs": []
 }

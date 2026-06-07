@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "wWmYgUwGD7SPfcKXz+xYxESTmLldLlRK+MLUaJUYxZ3bglE/8jNrZNqI5yyiy/kCiduyaoWoEPhy2y/l9X8UdQ==",
+  "dgSpecHash": "Fuh4Yz6lQ9g=",
   "success": true,
   "projectFilePath": "/home/kseniyastegantseva/ASOIU/seminar1/seminar1/seminar1.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "/home/kseniyastegantseva/.nuget/packages/microsoft.netcore.app.ref/8.0.27/microsoft.netcore.app.ref.8.0.27.nupkg.sha512",
+    "/home/kseniyastegantseva/.nuget/packages/microsoft.aspnetcore.app.ref/8.0.27/microsoft.aspnetcore.app.ref.8.0.27.nupkg.sha512",
+    "/home/kseniyastegantseva/.nuget/packages/microsoft.netcore.app.host.linux-x64/8.0.27/microsoft.netcore.app.host.linux-x64.8.0.27.nupkg.sha512"
+  ],
   "logs": []
 }
