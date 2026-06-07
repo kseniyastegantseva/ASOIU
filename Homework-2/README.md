@@ -55,7 +55,7 @@
 ## Запуск
 
 ```bash
-dotnet run --project Homework-2
+cd ./Homework-2/Homework-2 && dotnet run
 ```
 
 При первом запуске в папке `Homework-2` создаётся база `restaurants.db`, таблицы и начальные данные из CSV.
