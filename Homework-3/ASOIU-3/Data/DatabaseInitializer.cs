@@ -5,6 +5,8 @@ namespace ASOIU_3.Data;
 /// <summary>
 /// Создаёт базу данных и добавляет демонстрационные данные.
 /// </summary>
+// Инициализатор отделяет подготовку базы от пользовательского интерфейса,
+// чтобы Console и WinForms запускались с одинаковой схемой и начальными данными.
 public static class DatabaseInitializer
 {
     /// <summary>
@@ -13,8 +15,12 @@ public static class DatabaseInitializer
     public static void Initialize()
     {
         using var context = new AppDbContext();
+        // EnsureCreated создаёт файл базы и таблицы при первом запуске.
+        // Если база уже существует, пользовательские данные не пересоздаются.
         context.Database.EnsureCreated();
 
+        // Any — LINQ-метод, который проверяет наличие хотя бы одной записи.
+        // Проверка не допускает повторного добавления демонстрационных данных.
         if (context.Restaurants.Any())
         {
             return;
@@ -22,11 +28,15 @@ public static class DatabaseInitializer
 
         var restaurants = CreateRestaurants();
         context.Restaurants.AddRange(restaurants);
+        // SaveChanges формирует INSERT-команды и сохраняет весь граф ресторанов
+        // вместе с их связанными блюдами в SQLite.
         context.SaveChanges();
     }
 
     private static Restaurant[] CreateRestaurants()
     {
+        // Массив Restaurant[] — типизированная коллекция начальных Entity-объектов.
+        // Вложенные коллекции MenuItems сразу формируют связи one-to-many.
         return
         [
             new Restaurant

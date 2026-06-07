@@ -3,6 +3,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ASOIU_3.Services;
 
+// Сервис инкапсулирует CRUD справочной таблицы и не смешивает работу с БД
+// с кодом Console или WinForms. Это применение инкапсуляции и разделения ответственности.
 internal sealed class RestaurantService
 {
     private const int MaximumNameLength = 120;
@@ -11,13 +13,18 @@ internal sealed class RestaurantService
     {
         using var context = new AppDbContext();
 
+        // Запрос начинается с DbSet<Restaurant>, поэтому EF Core переводит эту LINQ-цепочку в SQL.
         return context.Restaurants
             .AsNoTracking()
+            // Лямбда задаёт ключ сортировки: рестораны выводятся по названию.
             .OrderBy(restaurant => restaurant.Name)
+            // Select проецирует Entity-модель в вспомогательный тип для интерфейса.
+            // Count здесь считает связанные блюда каждого ресторана.
             .Select(restaurant => new RestaurantListItem(
                 restaurant.Id,
                 restaurant.Name,
                 restaurant.MenuItems.Count))
+            // ToList выполняет SQL-запрос и материализует результат в обобщённый список.
             .ToList();
     }
 
@@ -51,6 +58,7 @@ internal sealed class RestaurantService
         }
 
         using var context = new AppDbContext();
+        // Find ищет Entity по первичному ключу и при возможности использует кэш контекста.
         var restaurant = context.Restaurants.Find(id);
         if (restaurant is null)
         {
@@ -77,6 +85,9 @@ internal sealed class RestaurantService
             return ServiceResult.Fail("Ресторан с указанным идентификатором не найден.");
         }
 
+        // Any выполняет проверку существования связанных блюд без загрузки всей коллекции.
+        // Лямбда использует внешний параметр id: это замыкание, которое EF Core
+        // преобразует в параметр SQL-запроса.
         var hasMenuItems = context.MenuItems
             .Any(menuItem => menuItem.RestaurantId == id);
         if (hasMenuItems)
@@ -112,6 +123,8 @@ internal sealed class RestaurantService
     {
         var normalizedName = name.ToLower();
 
+        // Лямбда замыкает сразу две внешние переменные: normalizedName и excludedId.
+        // При изменении excludedId текущая запись исключается из проверки уникальности.
         return context.Restaurants.Any(
             restaurant =>
                 restaurant.Name.ToLower() == normalizedName
@@ -119,4 +132,6 @@ internal sealed class RestaurantService
     }
 }
 
+// record — компактный вспомогательный тип результата, а не таблица базы данных.
+// Он передаёт интерфейсу только нужные для списка поля и вычисленное количество блюд.
 internal sealed record RestaurantListItem(int Id, string Name, int MenuItemCount);

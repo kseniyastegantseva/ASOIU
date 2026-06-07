@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ASOIU_3.Services;
 
+// Сервис отвечает за CRUD основной таблицы блюд и централизует её бизнес-валидацию.
 internal sealed class MenuItemService
 {
     private const int MaximumNameLength = 120;
@@ -14,11 +15,18 @@ internal sealed class MenuItemService
 
         var menuItems = context.MenuItems
             .AsNoTracking()
+            // Include с лямбдой подгружает связанный Restaurant одним запросом,
+            // чтобы далее безопасно использовать название ресторана.
             .Include(menuItem => menuItem.Restaurant)
+            // OrderBy сортирует блюда по значению Name.
             .OrderBy(menuItem => menuItem.Name)
+            // ToList материализует EF Core-запрос; после этой строки дальнейший LINQ
+            // работает уже с объектами в памяти.
             .ToList();
 
         return menuItems
+            // Select преобразует Entity в вспомогательную строку списка.
+            // Лямбда передаёт каждый элемент в общий метод Map.
             .Select(menuItem => Map(menuItem))
             .ToList();
     }
@@ -30,6 +38,8 @@ internal sealed class MenuItemService
         var menuItem = context.MenuItems
             .AsNoTracking()
             .Include(item => item.Restaurant)
+            // FirstOrDefault возвращает найденный объект либо null; id из параметра метода
+            // захватывается лямбдой item => item.Id == id, то есть используется замыкание.
             .FirstOrDefault(item => item.Id == id);
 
         return menuItem is null ? null : Map(menuItem);
@@ -42,6 +52,7 @@ internal sealed class MenuItemService
         return context.Restaurants
             .AsNoTracking()
             .OrderBy(restaurant => restaurant.Name)
+            // Проекция не передаёт форме всю Entity-модель, а создаёт только пару Id/Name.
             .Select(restaurant => new RestaurantChoice(
                 restaurant.Id,
                 restaurant.Name))
@@ -58,6 +69,8 @@ internal sealed class MenuItemService
         }
 
         using var context = new AppDbContext();
+        // Any проверяет существование выбранного внешнего ключа до сохранения блюда.
+        // Лямбда замыкает restaurantId, полученный из формы.
         if (!context.Restaurants.Any(restaurant => restaurant.Id == restaurantId))
         {
             return ServiceResult.Fail("Выбранный ресторан не найден.");
@@ -145,6 +158,7 @@ internal sealed class MenuItemService
                 $"Название не может быть длиннее {MaximumNameLength} символов.");
         }
 
+        // Проверка price < 0 выполняет требование ТЗ: отрицательная цена недопустима.
         if (!double.IsFinite(price) || price < 0)
         {
             return ServiceResult.Fail(
@@ -155,6 +169,8 @@ internal sealed class MenuItemService
     }
 }
 
+// Эти record-типы не являются таблицами БД. Они играют роль ViewModel/DTO:
+// передают в интерфейс подготовленные данные и скрывают Entity от слоя отображения.
 internal sealed record MenuItemListItem(
     int Id,
     string Name,
